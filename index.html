@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Clock by Kishan Pandey</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: 'Courier New', monospace;
+    }
+
+    .clock {
+      color: #00fff7;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 40px 80px;
+      font-size: 4rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7 inset;
+      backdrop-filter: blur(10px);
+      text-shadow: 0 0 10px #00fff7;
+      letter-spacing: 3px;
+    }
+
+    .signature {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      color: #ffffffbb;
+      text-shadow: 0 0 10px #00fff7;
+      font-style: italic;
+      letter-spacing: 2px;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px #00fff7;
+      }
+      to {
+        text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock">00:00:00</div>
+  <div class="signature">— Kishan Pandey</div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('clock').textContent = `${h}:${m}:${s}`;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
